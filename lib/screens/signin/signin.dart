@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:root_model/screens/signin/controller/signin_controller.dart';
@@ -14,17 +12,46 @@ class Signin extends GetView<SigninController> {
     return SafeArea(
       child: PopScope(
         canPop: false,
-        onPopInvoked: (arg) {
-
-        },
-        child: const SafeArea(
-          child: Scaffold(
+        onPopInvoked: (arg) {},
+        child: Obx(
+          () => Scaffold(
             backgroundColor: Colors.blueAccent,
-            body: Row(
+            body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(),
-                Text("sample text"),
+                const SizedBox(),
+                Text(controller.sampleText.value),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Username',
+                    ),
+                    controller: controller.usernameController,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Username',
+                    ),
+                    controller: controller.passwordController,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: controller.attemptLogin,
+                  child: const Text('로그인'),
+                ),
               ],
             ),
           ),
@@ -32,5 +59,4 @@ class Signin extends GetView<SigninController> {
       ),
     );
   }
-
 }
