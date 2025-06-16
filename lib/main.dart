@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:root_model/commons/auth/auth_controller.dart';
 import 'package:root_model/router/router.dart';
+import 'package:root_model/screens/signin/controller/signin_controller.dart';
+import 'package:root_model/screens/signin/service/signin_service.dart';
 import 'package:root_model/screens/signin/signin.dart';
+import 'package:root_model/screens/splash/controller/splash_controller.dart';
+import 'package:root_model/screens/splash/splash.dart';
 
 void main() async {
   await dotenv.load(); //비동기로 로드
@@ -12,7 +17,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static const String firstPage = Signin.routeName;
+  static const String firstPage = Splash.routeName;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +32,7 @@ class MyApp extends StatelessWidget {
         Locale('en', ''), // English, no country code
         Locale('kr', ''), // Korean, no country code
       ],
+      initialBinding: _InitBinding(),
       getPages: route(),
       initialRoute: firstPage,
       builder: (BuildContext context, Widget? child) {
@@ -43,6 +49,19 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/// 컨트롤러 상태 바인딩 클래스 입니다.
+class _InitBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(AuthController());
+    Get.put(SplashController());
+    Get.put(SigninService());
+    Get.put(SigninController());
+  }
+}
+
+
 
 class MyBehavior extends ScrollBehavior {
   @override
