@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:root_model/commons/auth/auth_controller.dart';
+import 'package:root_model/commons/auth/auth_guard.dart';
 import 'package:root_model/screens/issign/test.dart';
 import 'package:root_model/screens/signin/controller/signin_controller.dart';
 import 'package:root_model/screens/signin/service/signin_service.dart';
@@ -25,10 +26,10 @@ List<GetPage> route() {
       page: () => const Signin(),
     ),
     GetPage(
-      name: TestView.routeName,
-      transition: transition,
-      transitionDuration: transitionDuration,
-      page: () => const TestView(),
-    )
+        name: TestView.routeName,
+        transition: transition,
+        transitionDuration: transitionDuration,
+        page: () => const TestView(),
+        middlewares: [AuthGuard()]) //테스트용 가드
   ];
 }

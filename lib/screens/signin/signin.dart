@@ -52,6 +52,10 @@ class Signin extends GetView<SigninController> {
                   onPressed: controller.attemptLogin,
                   child: const Text('로그인'),
                 ),
+                ElevatedButton(
+                  onPressed: controller.testMovePage,
+                  child: const Text('로그인해야만갈수있는페이지이동'),
+                ),
               ],
             ),
           ),

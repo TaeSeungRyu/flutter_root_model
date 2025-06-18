@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:root_model/screens/issign/test.dart';
 import 'package:root_model/screens/signin/service/signin_service.dart';
 
 class SigninController extends GetxController with WidgetsBindingObserver {
@@ -30,6 +31,10 @@ class SigninController extends GetxController with WidgetsBindingObserver {
     } catch (e) {
       Get.snackbar('오류', e.toString().replaceAll('Exception: ', ''));
     }
+  }
+
+  void testMovePage () {
+    Get.toNamed(TestView.routeName);
   }
 
 }
