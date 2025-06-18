@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:root_model/commons/auth/auth_controller.dart';
+import 'package:root_model/screens/issign/test.dart';
 import 'package:root_model/screens/signin/controller/signin_controller.dart';
 import 'package:root_model/screens/signin/service/signin_service.dart';
 import 'package:root_model/screens/signin/signin.dart';
@@ -22,7 +23,12 @@ List<GetPage> route() {
       transition: transition,
       transitionDuration: transitionDuration,
       page: () => const Signin(),
-
     ),
+    GetPage(
+      name: TestView.routeName,
+      transition: transition,
+      transitionDuration: transitionDuration,
+      page: () => const TestView(),
+    )
   ];
 }
