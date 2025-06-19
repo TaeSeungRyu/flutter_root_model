@@ -21,4 +21,8 @@ class AuthController extends GetxController {
     Storage.put(key: authKey, value: accessToken);
   }
 
+  removeAccessToken() {
+    Storage.remove(authKey);
+  }
+
 }

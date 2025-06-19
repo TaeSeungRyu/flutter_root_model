@@ -34,4 +34,10 @@ class SigninService extends GetxService {
       throw Exception('서버 오류: ${response.statusCode}');
     }
   }
+
+  Future<void> logout() async {
+    // 로그아웃 API 호출
+    await BuHttpClient.get(APIS.signOut);
+    authController.removeAccessToken();
+  }
 }

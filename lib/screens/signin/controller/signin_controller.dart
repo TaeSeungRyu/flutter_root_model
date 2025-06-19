@@ -33,6 +33,16 @@ class SigninController extends GetxController with WidgetsBindingObserver {
     }
   }
 
+  Future<void> signOut() async {
+    try {
+      await _service.logout();
+      Get.snackbar('성공', '로그아웃에 성공했습니다!');
+    } catch (e) {
+      Get.snackbar('오류', e.toString().replaceAll('Exception: ', ''));
+    }
+  }
+
+
   void testMovePage () {
     Get.toNamed(TestView.routeName);
   }
